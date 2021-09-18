@@ -1,0 +1,15 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - echo "start->lambda_sam_deploy_ts"
+  build:
+    commands:
+      - sh aws/code_build/lambda_sam_deploy_ts.sh dev # 手順4で作成したshellを実行（引数devを渡す）
+  post_build:
+    commands:
+      - echo "finish->lambda_sam_deploy_ts"
+artifacts:
+  files:
+    - built/dev/**/* # 手順1で作成したS3 bucketに設置する成果物
